@@ -69,17 +69,20 @@ if choice == 1:
     for a in myrecords:
         print (a)
 
-elif choice == 2:
-    print("Enter the name of the parts you want to buy:")
-    username = input('USERNAME:')
-    password = input('PASSWORD:')
-    mycursor.execute("select * from user where username = ", username, " and passwd = ''", password,
-                     "".format(username, password))
-    data = mycursor.fetchall()
-    if any(data):
-        import main
-    else:
-        print('''try again''')
+if choice == 2:
+    while choice==2:
+        part = input("Part to buy")
+        print(dict1.items(),
+              '''this is the list of items and price we are willing to sell it for in \'INR\' .'''
+        if part in dict1.keys():
+            print('\n')
+            print(dict1[part],'Rs is the amount we are willing to take for it')
+            print('\n')
+            print("""to negotiate or for any other details call us on the number below or send us an email""")
+            print('\n')
+            dict2[part]=dict2[part]-1
+            choice=4
+        continue
 
 if choice == 3:
     while choice==3:
@@ -90,7 +93,7 @@ if choice == 3:
             print('\n')
             print(dict1[part],'Rs is the amount we are willing to pay for it')
             print('\n')
-            print("""to negociate or for any other details call us on the number below or send us an email""")
+            print("""to negotiate or for any other details call us on the number below or send us an email""")
             print('\n')
             dict2[part]=dict2[part]+1
             choice=4
